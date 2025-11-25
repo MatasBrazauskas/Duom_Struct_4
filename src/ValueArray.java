@@ -7,9 +7,9 @@ public interface ValueArray<E> {
 
     E get(int index);
 
-    void insert(E item);
+    void insert(E item, int index);
 
-    Object remove(E item);
+    E remove(int index);
 
     boolean isEmpty();
 
@@ -17,7 +17,7 @@ public interface ValueArray<E> {
 
     Object[] split(int index);
 
-    int lowerBound(int low, int high, E item);
+    int lowerBound(E item);
 
-    int binarySearch(int low, int high, E item);
+    int binarySearch(E item);
 }

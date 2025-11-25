@@ -10,7 +10,7 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
         }
     }
 
-    private class Node extends Leaf<E> {
+    private class Node<E extends Comparable<E>> extends Leaf<E> {
         public PtrArr<Node> pointers;
 
         public Node(int order) {
@@ -41,12 +41,23 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
     }
 
     public void add(E item){
+        Leaf<E> node = root;
+
+        while(node instanceof Node){
+            int endRangeIndex = node.items.lowerBound(item);
+            var value = node.items.get(endRangeIndex);
+
+            if(item.equals(value)){
+                return;
+            }
+
+            node = ((Node<E>)node).pointers.get(endRangeIndex);
+        }
+
+        
 
     }
 
-    public void insert(E item){
-
-    }
     public E remove(E item){
         return null;
     }

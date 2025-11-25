@@ -5,7 +5,7 @@ public interface PointerArr<E> {
 
     E get(int index);
 
-    void insert(E item);
+    void insert(E item, int index);
 
-    E remove(E item);
+    E remove(int index);
 }

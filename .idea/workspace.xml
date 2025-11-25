@@ -26,15 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/matas/Repos/B-Tree",
-    "onboarding.tips.debug.path": "/home/matas/Repos/B-Tree/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/matas/Repos/B-Tree&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/matas/Repos/B-Tree/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -57,7 +57,7 @@
       <workItem from="1764062240851" duration="2440000" />
       <workItem from="1764067944023" duration="4417000" />
       <workItem from="1764077174053" duration="50000" />
-      <workItem from="1764077264457" duration="3081000" />
+      <workItem from="1764077264457" duration="13017000" />
     </task>
     <servers />
   </component>

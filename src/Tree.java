@@ -7,8 +7,6 @@ public interface Tree<E> {
 
     void add(E item);
 
-    void insert(E item);
-
     E remove(E item);
 
     Iterator<E> iterator();

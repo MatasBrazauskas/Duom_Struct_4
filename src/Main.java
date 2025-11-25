@@ -1,28 +1,24 @@
+import java.lang.module.FindException;
+
 public class Main {
-    public static int[] arr;
-
-    public static int BinarySearch(int low, int high, int item){
-        int prev = high + 1;
-        while(low <= high){
-            int mid = low + (high - low) / 2;
-
-            if(arr[mid] >= item){
-                prev = mid;
-                high = mid - 1;
-            }else {
-                low = mid + 1;
-            }
-        }
-
-        return prev;
-    }
-
     public static void main(String[] args) {
+        /*var btree = new BTree<Integer>(5);
 
-        arr = new int[]{25, 30, 33, 37};
+        btree.add(1);
+        btree.add(2);
+        btree.add(3);
+        btree.add(4);
+        btree.add(5);*/
 
-        for(int i = 20; i < 40; i++) {
-            System.out.println(i + " " + BinarySearch(0, arr.length - 1, i));
+        var arr = new int[]{1, 2, 3, 4, 5, 0};
+
+        int index = 2;
+
+        System.arraycopy(arr, index, arr, index + 1, arr.length - index - 1);
+
+        for(int i : arr){
+            System.out.println(i);
         }
+
     }
 }

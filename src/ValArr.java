@@ -15,7 +15,7 @@ public class ValArr<E extends Comparable<E>> implements ValueArray<E> {
     }
 
     public boolean contains(E item){
-        int index = binarySearch(0, size - 1, item);
+        int index = binarySearch(item);
         return index != -1;
     }
 
@@ -29,15 +29,24 @@ public class ValArr<E extends Comparable<E>> implements ValueArray<E> {
     }
 
     public E get(int index){
+        if(index >= size) return null;
         return (E)arr[index];
     }
 
-    public void insert(E item){
+    public void insert(E item, int index){
+        System.arraycopy(arr, index, arr, index + 1, size - index - 1);
 
+        arr[index] = item;
+        size++;
     }
 
-    public Object remove(E item){
-        return null;
+    public E remove(int index){
+        var removedItem = (E)arr[index];
+
+        System.arraycopy(arr, index + 1, arr, index, size - index - 1);
+
+        arr[size--] = null;
+        return removedItem;
     }
 
     public boolean isEmpty(){
@@ -57,7 +66,9 @@ public class ValArr<E extends Comparable<E>> implements ValueArray<E> {
         return arrs;
     }
 
-    public int lowerBound(int low, int high, E item){
+    public int lowerBound(E item){
+        int low = 0;
+        int high = size - 1;
         int prev = high + 1;
 
         while(low <= high){
@@ -75,7 +86,10 @@ public class ValArr<E extends Comparable<E>> implements ValueArray<E> {
         return prev;
     }
 
-    public int binarySearch(int low, int high, E item){
+    public int binarySearch(E item){
+        int low = 0;
+        int high = size - 1;
+
         while(low <= high){
             int mid = low + (high - low) / 2;
             int cmp = ((E)arr[mid]).compareTo(item);

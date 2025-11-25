@@ -24,11 +24,19 @@ public class PtrArr<E> implements PointerArr<E> {
         return (E)arr[index];
     }
 
-    public void insert(E item){
+    public void insert(E item, int index){
+        System.arraycopy(arr, index, arr, index + 1, size - index - 1);
 
+        arr[index] = item;
+        size++;
     }
 
-    public E remove(E item){
-        return null;
+    public E remove(int index){
+        E removedItem = (E)arr[index];
+
+        System.arraycopy(arr, index + 1, arr, index, size - index - 1);
+
+        arr[size--] = null;
+        return removedItem;
     }
 }
