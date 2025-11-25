@@ -8,4 +8,6 @@ public interface PointerArr<E> {
     void insert(E item, int index);
 
     E remove(int index);
+
+    Object[] split(int index);
 }

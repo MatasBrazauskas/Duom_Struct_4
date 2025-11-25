@@ -39,4 +39,13 @@ public class PtrArr<E> implements PointerArr<E> {
         arr[size--] = null;
         return removedItem;
     }
+
+    public Object[] split(int index){
+        var arr = new PtrArr[]{new PtrArr<>(size), new PtrArr<>(size)};
+
+        System.arraycopy(arr, 0, arr[0].arr, 0, index);
+        System.arraycopy(arr, index + 1, arr[1].arr, 0, size - index - 1);
+
+        return arr;
+    }
 }
