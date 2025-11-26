@@ -3,7 +3,7 @@ import java.util.Stack;
 
 public class BTree<E extends Comparable<E>> implements Tree<E>
 {
-    private class Leaf<E extends Comparable<E>> {
+    public class Leaf<E extends Comparable<E>> {
         public ValArr<E> items;
 
         public Leaf(int order) {
@@ -11,7 +11,7 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
         }
     }
 
-    private class Node<E extends Comparable<E>> extends Leaf<E> {
+    public class Node<E extends Comparable<E>> extends Leaf<E> {
         public PtrArr<Node> pointers;
 
         public Node(int order) {
@@ -21,11 +21,11 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
         }
     }
 
-    private Node root;
+    public Node root;
 
-    private int order;
-    private int height;
-    private int size;
+    public int order;
+    public int height;
+    public int size;
 
     public BTree(int order) {
         this.root = new Node(order);
@@ -42,10 +42,10 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
     }
 
     public void add(E item){
+        Node<E> parent = null;
         Leaf<E> node = root;
-        Stack<Leaf<E>> stack = new Stack<>();
 
-        while(node instanceof Node){
+        while(node != null && node instanceof Node){
             int endRangeIndex = node.items.lowerBound(item);
             var value = node.items.get(endRangeIndex);
 
@@ -53,22 +53,23 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
                 return;
             }
 
-            stack.push(node);
+            parent = (Node<E>)node;
             node = ((Node<E>)node).pointers.get(endRangeIndex);
         }
 
-        if(node.items.isFull()){
-            int mid = order / 2 + 1;
-
-            Object[] arrs = node.items.split(mid);
-            ((ValueArray<E>[])arrs)[1].add(item);
-
-
-        } else {
-            int index = node.items.lowerBound(item);
-            node.items.insert(item, index);
+        if(node == null){
+            node = new Leaf(order);
+            node.items.add(item);
+            return;
         }
 
+        if(node.items.isFull()){
+            int index = order / 2;
+            E median = node.items.get(index);
+
+            Object[] arrs = node.items.split(index);
+
+        }
     }
 
     public E remove(E item){
@@ -82,11 +83,11 @@ public class BTree<E extends Comparable<E>> implements Tree<E>
     public void print() {
     }
 
-    private void printLevel(int level, Leaf<E> node){
+    public void printLevel(int level, Leaf<E> node){
 
     }
 
-    private class BTreeIterator<E> implements Iterator<E>{
+    public class BTreeIterator<E> implements Iterator<E>{
 
         @Override
         public boolean hasNext() {

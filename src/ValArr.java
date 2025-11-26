@@ -7,6 +7,7 @@ public class ValArr<E extends Comparable<E>> implements ValueArray<E> {
 
     public ValArr(int size){
         arr = new Object[size];
+        this.clear();
     }
 
     public void clear(){
